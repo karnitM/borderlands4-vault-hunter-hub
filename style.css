@@ -1,0 +1,77 @@
+body {
+    background-color: rgba(30, 29, 29, 0.772);
+    color: white;
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+}
+
+nav {
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+main {
+    padding: 20px;
+}
+
+.search-area {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.search-area input,
+.search-area select,
+.search-area button {
+    padding: 10px;
+    margin: 5px;
+}
+
+.weapon-list {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.weapon-card {
+    padding: 20px;
+    border: 1px solid white;
+    width: 250px;
+}
+
+.weapon-card h3 {
+    margin-top: 0;
+}
+
+.weapon-card button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+
+    .weapon-list {
+        flex-direction: column;
+    }
+
+    .weapon-card {
+        width: auto;
+    }
+
+    .search-area input,
+    .search-area select,
+    .search-area button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+}
