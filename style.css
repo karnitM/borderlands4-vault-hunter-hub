@@ -75,3 +75,49 @@ main {
     }
 
 }
+
+.build-list {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.build-card {
+    padding: 20px;
+    border: 1px solid white;
+    max-width: 300px;
+}
+
+.build-card h3 {
+    margin-top: 0;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+
+.account-form {
+    max-width: 400px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 1px solid white;
+}
+
+.account-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.account-form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.account-form input {
+    padding: 10px;
+}
+
+.account-form button {
+    margin-top: 20px;
+}
