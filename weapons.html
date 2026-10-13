@@ -1,89 +1,174 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Weapons - Borderlands 4 Vault Hunter Hub</title>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/weapons.css">
 </head>
 
 <body>
 
-    <h1>Borderlands 4 Vault Hunter Hub</h1>
+    <header>
+        <h1>Borderlands 4 Vault Hunter Hub</h1>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="weapons.html">Weapons</a>
-        <a href="builds.html">Builds</a>
-        <a href="login.html">Login</a>
-    </nav>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="weapons.html">Weapons</a>
+            <a href="builds.html">Builds</a>
+            <a href="login.html">Login</a>
+        </nav>
+    </header>
 
     <main>
 
-        <h2>Weapons</h2>
+        <section class="search-area">
+            <h2>Borderlands 4 Weapons</h2>
 
-        <p>Browse and search for Borderlands 4 weapons.</p>
+            <p>
+                Browse weapons, search by name, or filter by
+                weapon type and rarity.
+            </p>
 
-        <div class="search-area">
+            <div class="search-filters">
 
-            <input type="text" placeholder="Search weapons...">
+                <input
+                    type="text"
+                    id="weapon-search"
+                    placeholder="Search weapons..."
+                    aria-label="Search weapons by name"
+                >
 
-            <select>
-                <option value="">All Weapon Types</option>
-                <option value="pistol">Pistol</option>
-                <option value="smg">SMG</option>
-                <option value="shotgun">Shotgun</option>
-                <option value="assault-rifle">Assault Rifle</option>
-                <option value="sniper">Sniper Rifle</option>
-            </select>
+                <select id="weapon-type-filter"
+                        aria-label="Filter by weapon type">
+                    <option value="all">All Types</option>
+                    <option value="pistol">Pistol</option>
+                    <option value="assault rifle">Assault Rifle</option>
+                    <option value="shotgun">Shotgun</option>
+                    <option value="smg">SMG</option>
+                    <option value="sniper rifle">Sniper Rifle</option>
+                    <option value="heavy weapon">Heavy Weapon</option>
+                </select>
 
-            <select>
-                <option value="">All Rarities</option>
-                <option value="common">Common</option>
-                <option value="uncommon">Uncommon</option>
-                <option value="rare">Rare</option>
-                <option value="epic">Epic</option>
-                <option value="legendary">Legendary</option>
-            </select>
+                <select id="weapon-rarity-filter"
+                        aria-label="Filter by rarity">
+                    <option value="all">All Rarities</option>
+                    <option value="common">Common</option>
+                    <option value="uncommon">Uncommon</option>
+                    <option value="rare">Rare</option>
+                    <option value="epic">Epic</option>
+                    <option value="legendary">Legendary</option>
+                </select>
 
-            <button>Search</button>
+                <button type="button" id="reset-filters">
+                    Reset Filters
+                </button>
 
-        </div>
-
-        <div class="weapon-list">
-
-            <div class="weapon-card">
-                <h3>Weapon Name</h3>
-                <p>Type: Pistol</p>
-                <p>Manufacturer: Manufacturer</p>
-                <p>Rarity: Legendary</p>
-                <button>View Details</button>
             </div>
+        </section>
 
-            <div class="weapon-card">
-                <h3>Weapon Name</h3>
-                <p>Type: Shotgun</p>
-                <p>Manufacturer: Manufacturer</p>
-                <p>Rarity: Epic</p>
-                <button>View Details</button>
-            </div>
+        <section class="weapon-list">
 
-            <div class="weapon-card">
-                <h3>Weapon Name</h3>
-                <p>Type: Sniper Rifle</p>
-                <p>Manufacturer: Manufacturer</p>
-                <p>Rarity: Rare</p>
-                <button>View Details</button>
-            </div>
+            <h2>All Weapons</h2>
 
-        </div>
+            <table class="weapons-table">
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Weapon</th>
+                        <th>Type</th>
+                        <th>Manufacturer</th>
+                        <th>Rarity</th>
+                        <th>Element</th>
+                        <th>Source</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>
+                            <a href="weapon-details.html?id=paperclip">
+                                <img
+                                    src="images/paperclip.avif"
+                                    alt="Paperclip pistol"
+                                    class="weapon-image"
+                                >
+                            </a>
+                        </td>
+                        <td>
+                            <a href="weapon-details.html?id=paperclip">
+                                Paperclip
+                            </a>
+                        </td>
+                        <td>Pistol</td>
+                        <td>Tediore</td>
+                        <td class="epic">Epic</td>
+                        <td>Kinetic</td>
+                        <td>Quest reward</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <a href="weapon-details.html?id=zipper">
+                                <img
+                                    src="images/zipper.avif"
+                                    alt="Zipper pistol"
+                                    class="weapon-image"
+                                >
+                            </a>
+                        </td>
+                        <td>
+                            <a href="weapon-details.html?id=zipper">
+                                Zipper
+                            </a>
+                        </td>
+                        <td>Pistol</td>
+                        <td>Daedalus</td>
+                        <td class="legendary">Legendary</td>
+                        <td>Kinetic</td>
+                        <td>Leader Willem</td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <a href="weapon-details.html?id=bonnie-and-clyde">
+                                <img
+                                    src="images/bonnie-and-clyde.avif"
+                                    alt="Bonnie and Clyde assault rifle"
+                                    class="weapon-image"
+                                >
+                            </a>
+                        </td>
+                        <td>
+                            <a href="weapon-details.html?id=bonnie-and-clyde">
+                                Bonnie and Clyde
+                            </a>
+                        </td>
+                        <td>Assault Rifle</td>
+                        <td>Jakobs</td>
+                        <td class="legendary">Legendary</td>
+                        <td>Kinetic</td>
+                        <td>Directive-0</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <p id="no-results" hidden>
+                No weapons match your search.
+            </p>
+
+        </section>
 
     </main>
 
-    
+    <script src="js/weapons.js"></script>
 
 </body>
-
 </html>

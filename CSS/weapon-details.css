@@ -1,0 +1,219 @@
+
+/* Main weapon details container */
+.weapon-details {
+    max-width: 1100px;
+    margin: 35px auto;
+    padding: 20px;
+}
+
+/* Back navigation */
+.back-link {
+    display: inline-block;
+    color: #ffcc00;
+    text-decoration: none;
+    margin-bottom: 25px;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Weapon header */
+.weapon-header {
+    background-color: #252525;
+    border: 1px solid #444;
+    border-top: 4px solid #ffcc00;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.weapon-header h2 {
+    font-size: 42px;
+    margin: 0 0 10px;
+    color: white;
+}
+
+/* Borderlands red flavour text */
+.red-text {
+    color: #ff4d4d;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 10px 0 15px;
+}
+
+
+
+.weapon-subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.weapon-subtitle.legendary {
+    color: #ff9900;
+}
+
+.weapon-subtitle.epic {
+    color: #b76cff;
+}
+
+.weapon-subtitle.rare {
+    color: #3399ff;
+}
+
+.weapon-subtitle.uncommon {
+    color: #4caf50;
+}
+
+.weapon-subtitle.common {
+    color: #ffffff;
+}
+
+
+
+/* Large weapon image */
+
+.detail-image {
+    width: 100%;
+    max-width: 350px;
+    max-height: 200px;
+    height: auto;
+    object-fit: contain;
+    display: block;
+    margin: 20px auto;
+}
+
+
+/* Shared section styling */
+.weapon-info,
+.special-ability,
+.weapon-stats,
+.weapon-variants,
+.weapon-parts,
+.drop-source,
+.farming-guide,
+.weapon-notes {
+    background-color: #252525;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+}
+
+/* Section headings */
+.weapon-details h3 {
+    color: #ffcc00;
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+}
+
+/* Weapon information and stats grids */
+.info-grid,
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.info-grid p,
+.stats-grid p {
+    background-color: #303030;
+    padding: 15px;
+    margin: 0;
+    border-radius: 5px;
+    overflow-wrap: anywhere;
+}
+
+.weapon-details strong {
+    color: #ddd;
+}
+
+/* Special effects */
+.special-ability {
+    border-left: 4px solid #ff4d4d;
+}
+
+.special-ability p {
+    line-height: 1.7;
+}
+
+/* Variants and parts */
+#weapon-variants,
+#weapon-parts {
+    line-height: 1.8;
+}
+
+/* Drop and farming information */
+.drop-source {
+    border-left: 4px solid #ff9900;
+}
+
+.farming-guide {
+    border-left: 4px solid #66bb6a;
+}
+
+.drop-source p,
+.farming-guide p,
+.weapon-notes p {
+    line-height: 1.7;
+}
+
+/* Links inside weapon details */
+.weapon-details section a {
+    color: #ffcc00;
+}
+
+.weapon-details section a:hover {
+    color: white;
+}
+
+/* Tablet and mobile layout */
+@media (max-width: 700px) {
+    .weapon-details {
+        margin: 15px auto;
+        padding: 12px;
+    }
+
+    .weapon-header {
+        padding: 20px 15px;
+    }
+
+    .weapon-header h2 {
+        font-size: 30px;
+    }
+
+    .red-text {
+        font-size: 16px;
+    }
+
+    .detail-image {
+        max-height: 250px;
+    }
+
+    .weapon-info,
+    .special-ability,
+    .weapon-stats,
+    .weapon-variants,
+    .weapon-parts,
+    .drop-source,
+    .farming-guide,
+    .weapon-notes {
+        padding: 18px;
+    }
+
+    .info-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .weapon-details h3 {
+        font-size: 19px;
+    }
+}
