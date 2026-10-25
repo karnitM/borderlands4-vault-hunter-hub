@@ -63,12 +63,12 @@ const weapons = {
     }
 };
 
-const params = new URLSearchParams(window.location.search);
-const weaponId = params.get("id");
-
-const weapon = Object.hasOwn(weapons, weaponId)
-    ? weapons[weaponId]
-    : null;
+// Match MySQL weapon names to existing detail records
+const weaponKeysByName = {
+    "paperclip": "paperclip",
+    "zipper": "zipper",
+    "bonnie and clyde": "bonnie-and-clyde"
+};
 
 function displayList(elementId, items) {
     const container = document.getElementById(elementId);
@@ -85,7 +85,7 @@ function displayList(elementId, items) {
     container.appendChild(list);
 }
 
-if (weapon) {
+function displayWeapon(weapon) {
     document.getElementById("weapon-name").textContent = weapon.name;
     document.getElementById("red-text").textContent = weapon.redText;
 
@@ -129,8 +129,9 @@ if (weapon) {
     displayList("weapon-notes", weapon.notes);
 
     document.title = `${weapon.name} - Borderlands 4 Vault Hunter Hub`;
+}
 
-} else {
+function showWeaponNotFound() {
     document.querySelector(".weapon-details").innerHTML = `
         <a href="weapons.html" class="back-link">
             &larr; Back to Weapons
@@ -139,3 +140,61 @@ if (weapon) {
         <p>The requested weapon could not be found.</p>
     `;
 }
+
+async function loadWeaponDetails() {
+    const params = new URLSearchParams(window.location.search);
+    const weaponId = params.get("id");
+
+    // Support the original text-based weapon links
+    if (Object.hasOwn(weapons, weaponId)) {
+        displayWeapon(weapons[weaponId]);
+        return;
+    }
+
+    try {
+        const response = await fetch("/api/weapons");
+
+        if (!response.ok) {
+            throw new Error("Failed to load weapons");
+        }
+
+        const databaseWeapons = await response.json();
+
+        const databaseWeapon = databaseWeapons.find(function(weapon) {
+            return String(weapon.id) === weaponId;
+        });
+
+        if (!databaseWeapon) {
+            showWeaponNotFound();
+            return;
+        }
+
+        const weaponKey =
+            weaponKeysByName[databaseWeapon.name.toLowerCase()];
+
+        const existingDetails = weapons[weaponKey];
+
+        if (!existingDetails) {
+            showWeaponNotFound();
+            return;
+        }
+
+        // Use database information alongside existing detailed content
+        displayWeapon({
+            ...existingDetails,
+            name: databaseWeapon.name,
+            rarity: databaseWeapon.rarity,
+            type: databaseWeapon.weapon_type,
+            manufacturer: databaseWeapon.manufacturer,
+            element: databaseWeapon.element,
+            image: databaseWeapon.image,
+            source: databaseWeapon.source
+        });
+
+    } catch (error) {
+        console.error("Error loading weapon details:", error);
+        showWeaponNotFound();
+    }
+}
+
+loadWeaponDetails();
