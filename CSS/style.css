@@ -1,12 +1,40 @@
+/* GENERAL WEBSITE STYLING */
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: rgba(30, 29, 29, 0.772);
+    margin: 0;
+    background-color: #242424;
     color: white;
+    font-family: Arial, sans-serif;
+    line-height: 1.5;
 }
 
 h1 {
     text-align: center;
-    font-size: 40px;
+    font-size: clamp(26px, 5vw, 40px);
+    margin: 0;
 }
+
+main {
+    padding: 20px;
+}
+
+/* HEADER */
+
+.site-header {
+    background-color: #202020;
+    border-bottom: 4px solid #FFD32A;
+    padding-top: 20px;
+}
+
+.site-header h1 {
+    padding: 0 15px 20px;
+}
+
+/* NAVIGATION */
 
 nav {
     text-align: center;
@@ -19,9 +47,185 @@ nav a {
     margin: 0 15px;
 }
 
-main {
-    padding: 20px;
+nav a:hover {
+    color: #FFD32A;
 }
+
+.navbar {
+    position: relative;
+    padding: 0;
+    background-color: #292929;
+}
+
+.nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+}
+
+.nav-links.open {
+    display: flex;
+}
+
+.nav-links a {
+    display: block;
+    margin: 0;
+    padding: 14px 20px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    border-top: 1px solid #404040;
+}
+
+.nav-links a:hover {
+    background-color: #FFD32A;
+    color: #202020;
+}
+
+.nav-links a.active {
+    border: 2px solid #FFD32A;
+    border-radius: 5px;
+}
+
+.menu-toggle {
+    display: block;
+    margin: 0 12px 0 auto;
+    padding: 10px 15px;
+    background-color: #FFD32A;
+    color: #202020;
+    border: none;
+    border-radius: 5px;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* HOMEPAGE */
+
+.home-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 16px;
+}
+
+.welcome-section {
+    text-align: center;
+    background-color: #303030;
+    border: 2px solid #FFD32A;
+    border-radius: 10px;
+    padding: 35px 20px;
+    margin-bottom: 35px;
+}
+
+.welcome-section h2 {
+    color: #FFD32A;
+    font-size: clamp(25px, 4vw, 36px);
+    margin-top: 0;
+}
+
+.welcome-section p {
+    max-width: 650px;
+    margin: 0 auto 25px;
+    color: #E0E0E0;
+}
+
+/* HOMEPAGE BUTTON */
+
+.browse-button,
+.welcome-section .button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #FFD32A;
+    color: #202020;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.browse-button:hover,
+.welcome-section .button:hover {
+    background-color: #FFE477;
+    color: #202020;
+}
+
+/* HOMEPAGE FEATURE CARDS */
+
+.features-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.features-section h2 {
+    text-align: center;
+    color: #FFD32A;
+    margin-bottom: 25px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.feature-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #303030;
+    border: 2px solid #505050;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    min-width: 0;
+}
+
+.feature-card:hover {
+    border-color: #FFD32A;
+}
+
+/* FEATURE CARD IMAGES */
+
+.feature-card img {
+    display: block;
+    width: 100%;
+    max-width: 280px;
+    height: 170px;
+    object-fit: contain;
+    margin: 0 auto 15px;
+}
+
+/* FEATURE CARD TEXT */
+
+.feature-card h3 {
+    color: #FFD32A;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.feature-card p {
+    color: #E0E0E0;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* FEATURE CARD BUTTONS */
+
+.feature-card a {
+    display: inline-block;
+    padding: 10px 18px;
+    margin-top: 10px;
+    background-color: #FFD32A;
+    color: #202020;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.feature-card a:hover {
+    background-color: #FFE477;
+}
+
+/* WEAPONS PAGE */
 
 .search-area {
     padding: 20px;
@@ -56,25 +260,7 @@ main {
     cursor: pointer;
 }
 
-@media (max-width: 700px) {
-
-    .weapon-list {
-        flex-direction: column;
-    }
-
-    .weapon-card {
-        width: auto;
-    }
-
-    .search-area input,
-    .search-area select,
-    .search-area button {
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-    }
-
-}
+/* BUILDS PAGE */
 
 .build-list {
     margin-top: 30px;
@@ -91,11 +277,14 @@ main {
     margin-top: 0;
 }
 
+/* BUTTONS */
+
 button {
     padding: 10px 15px;
     cursor: pointer;
 }
 
+/* LOGIN AND REGISTRATION */
 
 .account-form {
     max-width: 400px;
@@ -120,4 +309,65 @@ button {
 
 .account-form button {
     margin-top: 20px;
+}
+
+/* MOBILE STYLING */
+
+@media (max-width: 700px) {
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .feature-card img {
+        height: 150px;
+    }
+
+    .weapon-list {
+        flex-direction: column;
+    }
+
+    .weapon-card {
+        width: auto;
+    }
+
+    .search-area input,
+    .search-area select,
+    .search-area button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .account-form {
+        margin: 20px 10px;
+    }
+}
+
+/* DESKTOP STYLING */
+
+@media (min-width: 701px) {
+
+    .site-header {
+        padding-top: 25px;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .nav-links a {
+        border-top: none;
+        padding: 15px 25px;
+    }
+
+    .features-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vault Hunter Details | Borderlands 4 Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/vault-hunters.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>Borderlands 4 Vault Hunter Hub</h1>
+
+        <nav class="navbar" aria-label="Main navigation">
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="nav-links">
+                ☰
+            </button>
+
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="weapons.html">Weapons</a>
+                <a href="vault-hunters.html">Vault Hunters</a>
+                <a href="builds.html">Builds</a>
+                <a href="login.html">Login</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="hunters-container">
+
+        <a href="vault-hunters.html" class="back-link">
+            ← Back to Vault Hunters
+        </a>
+
+        <section class="hunter-details">
+
+            <div class="hunter-details-image">
+                <img
+                    id="hunter-image"
+                    src=""
+                    alt="Vault Hunter character artwork">
+            </div>
+
+            <div class="hunter-details-info">
+
+                <h2 id="hunter-name">Vault Hunter</h2>
+
+                <p id="hunter-class"></p>
+
+                <h3>Character Background</h3>
+                <p id="hunter-background"></p>
+
+                <h3>Combat Style</h3>
+                <p id="hunter-combat"></p>
+
+            </div>
+
+        </section>
+
+        <section class="hunter-abilities">
+
+            <h2>Action Skills & Abilities</h2>
+
+            <div id="hunter-skills" class="skills-grid">
+                <!-- Skills will be added using JavaScript -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/vault-hunter-details.js"></script>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
+    </script>
+
+</body>
+
+</html>

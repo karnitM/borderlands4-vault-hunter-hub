@@ -1,35 +1,155 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderlands 4 Vault Hunter Hub</title>
+
+    <title>Home | Borderlands 4 Vault Hunter Hub</title>
+
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <h1>Borderlands 4 Vault Hunter Hub</h1>
+    <header class="site-header">
+        <h1>Borderlands 4 Vault Hunter Hub</h1>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="weapons.html">Weapons</a>
-        <a href="builds.html">Builds</a>
-        <a href="login.html">Login</a>
-    </nav>
+        <nav class="navbar" aria-label="Main navigation">
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="nav-links">
+                ☰
+            </button>
+
+            <div class="nav-links" id="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="weapons.html">Weapons</a>
+                <a href="vault-hunters.html">Vault Hunters</a>
+                <a href="builds.html">Builds</a>
+                <a href="login.html">Login</a>
+            </div>
+
+        </nav>
+    </header>
 
     <main>
-        <h2>Welcome, Vault Hunter!</h2>
 
-        <p>
-            Explore Borderlands 4 weapons and gear, or create your own
-            Vault Hunter builds.
-        </p>
+        <section class="welcome-section">
 
-        <a href="weapons.html">Browse Weapons</a>
+            <h2>Welcome to the Vault Hunter Hub</h2>
+
+            <p>
+                Your guide to Borderlands 4 weapons,
+                Vault Hunters and character builds.
+                Discover powerful gear, explore character
+                backgrounds and prepare for your next adventure.
+            </p>
+
+            <a href="weapons.html" class="button">
+                Browse Weapons
+            </a>
+
+        </section>
+
+        <section class="features-section">
+
+            <h2>Explore Borderlands 4</h2>
+
+            <div class="features-grid">
+
+                <!-- WEAPONS CARD -->
+
+                <article class="feature-card">
+
+                    <img
+                        src="images/paperclip.avif"
+                        alt="Borderlands 4 weapon"
+                        class="feature-image">
+
+                    <h3>Weapons</h3>
+
+                    <p>
+                        Browse weapons, compare their stats
+                        and discover powerful gear.
+                    </p>
+
+                    <a href="weapons.html" class="button">
+                        Explore Weapons
+                    </a>
+
+                </article>
+
+                <!-- VAULT HUNTERS CARD -->
+
+                <article class="feature-card">
+
+                    <img
+                        src="images/vault-hunters-group.png"
+                        alt="Borderlands 4 Vault Hunters group artwork"
+                        class="feature-image">
+
+                    <h3>Vault Hunters</h3>
+
+                    <p>
+                        Meet the six Vault Hunters and
+                        discover their backgrounds,
+                        abilities and combat styles.
+                    </p>
+
+                    <a href="vault-hunters.html" class="button">
+                        Meet the Vault Hunters
+                    </a>
+
+                </article>
+
+                <!-- BUILDS CARD -->
+
+                <article class="feature-card">
+
+                    <img
+                        src="images/bonnie-and-clyde.avif"
+                        alt="Borderlands 4 legendary weapons"
+                        class="feature-image">
+
+                    <h3>Vault Hunter Builds</h3>
+
+                    <p>
+                        Explore character builds and
+                        discover ways to improve
+                        your combat performance.
+                    </p>
+
+                    <a href="builds.html" class="button">
+                        Explore Builds
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
     </main>
 
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
+    </script>
 
 </body>
 

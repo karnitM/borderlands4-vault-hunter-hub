@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vault Hunters | Borderlands 4 Vault Hunter Hub</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/vault-hunters.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>Borderlands 4 Vault Hunter Hub</h1>
+
+        <nav class="navbar" aria-label="Main navigation">
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-label="Toggle navigation menu"
+                aria-expanded="false"
+                aria-controls="nav-links">
+                ☰
+            </button>
+
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="weapons.html">Weapons</a>
+                <a href="vault-hunters.html">Vault Hunters</a>
+                <a href="builds.html">Builds</a>
+                <a href="login.html">Login</a>
+            </div>
+
+        </nav>
+    </header>
+
+    <main class="hunters-container">
+
+        <section class="hunters-intro">
+            <h2>Meet the Vault Hunters</h2>
+
+            <p>
+                Discover the six Vault Hunters of Borderlands 4.
+                Explore their backgrounds, abilities and combat styles.
+                Select a character to learn more.
+            </p>
+        </section>
+
+        <section class="hunters-grid" aria-label="Vault Hunter characters">
+
+            <!-- VEX -->
+
+            <article class="hunter-card">
+                <img
+                    class="hunter-image"
+                    src="images/hunters/vex.png"
+                    alt="Vex the Siren">
+
+                <h3>Vex</h3>
+                <p class="hunter-class">The Siren</p>
+
+                <p>
+                    Vex is a mysterious Siren who uses supernatural
+                    powers and summoned allies in combat.
+                </p>
+
+                <a class="hunter-details-button"
+                   href="vault-hunter-details.html?hunter=vex">
+                    View Details
+                </a>
+            </article>
+
+            <!-- RAFA -->
+
+            <article class="hunter-card">
+                <img
+                    class="hunter-image"
+                    src="images/hunters/rafa.png"
+                    alt="Rafa the Exo-Soldier">
+
+                <h3>Rafa</h3>
+                <p class="hunter-class">The Exo-Soldier</p>
+
+                <p>
+                    Rafa is a highly trained soldier equipped
+                    with advanced combat technology.
+                </p>
+
+                <a class="hunter-details-button"
+                   href="vault-hunter-details.html?hunter=rafa">
+                    View Details
+                </a>
+            </article>
+
+            <!-- AMON -->
+
+            <article class="hunter-card">
+                <img
+                    class="hunter-image"
+                    src="images/hunters/amon.png"
+                    alt="Amon the Forgeknight">
+
+                <h3>Amon</h3>
+                <p class="hunter-class">The Forgeknight</p>
+
+                <p>
+                    Amon is a powerful warrior who combines
+                    heavy weapons with elemental abilities.
+                </p>
+
+                <a class="hunter-details-button"
+                   href="vault-hunter-details.html?hunter=amon">
+                    View Details
+                </a>
+            </article>
+
+            <!-- HARLOWE -->
+
+            <article class="hunter-card">
+                <img
+                    class="hunter-image"
+                    src="images/hunters/harlowe.png"
+                    alt="Harlowe the Gravitar">
+
+                <h3>Harlowe</h3>
+                <p class="hunter-class">The Gravitar</p>
+
+                <p>
+                    Harlowe is a scientist who uses experimental
+                    technology to control the battlefield.
+                </p>
+
+                <a class="hunter-details-button"
+                   href="vault-hunter-details.html?hunter=harlowe">
+                    View Details
+                </a>
+            </article>
+
+            <!-- C4SH -->
+
+            <article class="hunter-card">
+                <img
+                    class="hunter-image"
+                    src="images/hunters/c4sh.png"
+                    alt="C4SH the Rogue">
+
+                <h3>C4SH</h3>
+                <p class="hunter-class">The Rogue</p>
+
+                <p>
+                    C4SH is a former CasinoBot who relies
+                    on luck and unpredictable combat abilities.
+                </p>
+
+                <a class="hunter-details-button"
+                   href="vault-hunter-details.html?hunter=c4sh">
+                    View Details
+                </a>
+            </article>
+
+            <!-- LOVELESS -->
+
+            <article class="hunter-card">
+                <img
+                    class="hunter-image"
+                    src="images/hunters/loveless.png"
+                    alt="Loveless the Hacker">
+
+                <h3>Loveless</h3>
+                <p class="hunter-class">The Hacker</p>
+
+                <p>
+                    Loveless uses hacking technology and
+                    digital abilities to disrupt enemies.
+                </p>
+
+                <a class="hunter-details-button"
+                   href="vault-hunter-details.html?hunter=loveless">
+                    View Details
+                </a>
+            </article>
+
+        </section>
+
+    </main>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
+    </script>
+
+</body>
+
+</html>
