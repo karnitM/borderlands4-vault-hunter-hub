@@ -1,4 +1,3 @@
-
 const mysql = require("mysql2");
 const dbConfig = require("../config/mysql");
 
@@ -113,11 +112,53 @@ function deleteWeapon(id, callback) {
     });
 }
 
+// Get all saved Vault Hunter builds
+function getBuilds(callback) {
+    const connection = mysql.createConnection(dbConfig);
+
+    const sql = `
+        SELECT id, build_name, vault_hunter,
+               main_weapon, description, created_at
+        FROM builds
+        ORDER BY created_at DESC, id DESC
+    `;
+
+    connection.query(sql, function(error, results) {
+        connection.end();
+        callback(error, results);
+    });
+}
+
+// Save a new Vault Hunter build
+function createBuild(build, callback) {
+    const connection = mysql.createConnection(dbConfig);
+
+    const sql = `
+        INSERT INTO builds
+        (build_name, vault_hunter, main_weapon, description)
+        VALUES (?, ?, ?, ?)
+    `;
+
+    const values = [
+        build.build_name,
+        build.vault_hunter,
+        build.main_weapon,
+        build.description
+    ];
+
+    connection.query(sql, values, function(error, result) {
+        connection.end();
+        callback(error, result);
+    });
+}
+
 module.exports = {
     testConnection,
     getUsers,
     getWeapons,
     createWeapon,
     updateWeapon,
-    deleteWeapon
+    deleteWeapon,
+    getBuilds,
+    createBuild
 };

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Build | Borderlands 4 Vault Hunter Hub</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/builds.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>Borderlands 4 Vault Hunter Hub</h1>
+
+        <nav class="navbar" aria-label="Main navigation">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="nav-links">
+                ☰
+            </button>
+
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="weapons.html">Weapons</a>
+                <a href="vault-hunters.html">Vault Hunters</a>
+                <a href="builds.html">Builds</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="builds-container">
+
+        <section class="builds-intro">
+            <h2>Create Your Own Build</h2>
+            <p>
+                Choose a Vault Hunter and customise
+                your Borderlands 4 character build.
+            </p>
+        </section>
+
+        <section class="create-build-section">
+
+            <form id="create-build-form">
+
+                <div class="form-group">
+                    <label for="build-name">Build Name</label>
+                    <input type="text" id="build-name" name="buildName" placeholder="e.g. Vex Summoner Build"
+                        maxlength="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="vault-hunter">Vault Hunter</label>
+
+                    <select id="vault-hunter" name="vaultHunter" required>
+                        <option value="">Select a Vault Hunter</option>
+                        <option value="Vex">Vex</option>
+                        <option value="Rafa">Rafa</option>
+                        <option value="Amon">Amon</option>
+                        <option value="Harlowe">Harlowe</option>
+                        <option value="C4SH">C4SH</option>
+                        <option value="Loveless">Loveless</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="build-weapon">Main Weapon</label>
+                    <input type="text" id="build-weapon" name="mainWeapon" placeholder="Enter your main weapon"
+                        maxlength="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="build-description">Build Description</label>
+
+                    <textarea id="build-description" name="description" rows="5"
+                        placeholder="Describe your build, skills and playstyle..." maxlength="2000" required></textarea>
+                </div>
+
+                <button type="submit" class="save-build-button">
+                    Save Build
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+
+            menuToggle.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+        });
+
+
+        // Save Vault Hunter build to MySQL through the API
+        const buildForm = document.getElementById("create-build-form");
+
+        buildForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const build = {
+                build_name: document.getElementById("build-name").value.trim(),
+                vault_hunter: document.getElementById("vault-hunter").value,
+                main_weapon: document.getElementById("build-weapon").value.trim(),
+                description: document.getElementById("build-description").value.trim()
+            };
+
+            try {
+                const response = await fetch("/api/builds", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(build)
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || "Could not save build");
+                }
+
+                alert("Build saved successfully!");
+
+                // Return to the Builds page
+                window.location.href = "builds.html";
+
+            } catch (error) {
+                console.error("Error saving build:", error);
+                alert("Error: " + error.message);
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>

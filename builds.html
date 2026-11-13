@@ -4,40 +4,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Builds - Borderlands 4 Vault Hunter Hub</title>
+
+    <title>Vault Hunter Builds | Borderlands 4 Hub</title>
+
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/builds.css">
 </head>
 
 <body>
 
-    <h1>Borderlands 4 Vault Hunter Hub</h1>
+    <header class="site-header">
+        <h1>Borderlands 4 Vault Hunter Hub</h1>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="weapons.html">Weapons</a>
-        <a href="builds.html">Builds</a>
-        <a href="login.html">Login</a>
-    </nav>
+        <nav class="navbar" aria-label="Main navigation">
+            <button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false"
+                aria-controls="nav-links">
+                ☰
+            </button>
 
-    <main>
-        <h2>Vault Hunter Builds</h2>
-
-        <p>Create and manage your own Borderlands 4 Vault Hunter builds.</p>
-
-        <div class="build-list">
-
-            <div class="build-card">
-                <h3>My Build</h3>
-                <p>Vault Hunter: Not selected</p>
-                <p>Weapons: 0</p>
-
-                <button>View Build</button>
+            <div class="nav-links" id="nav-links">
+                <a href="index.html">Home</a>
+                <a href="weapons.html">Weapons</a>
+                <a href="vault-hunters.html">Vault Hunters</a>
+                <a href="builds.html">Builds</a>
+                <a href="login.html">Login</a>
             </div>
+        </nav>
+    </header>
 
-        </div>
+    <main class="builds-container">
 
-        <button>Create New Build</button>
+        <section class="builds-intro">
+            <h2>Vault Hunter Builds</h2>
+            <p>
+                Explore build ideas for each Vault Hunter.
+                Discover different combat styles and prepare
+                your own character builds.
+            </p>
+        </section>
+
+        <section class="builds-grid">
+
+            <article class="build-card">
+                <img src="images/hunters/vex.png" alt="Vex">
+                <h3>Vex</h3>
+                <p class="build-type">Summoner Build</p>
+                <p>
+                    Focus on summoned companions and
+                    supernatural abilities.
+                </p>
+                <button type="button" disabled>View Build — Coming Soon</button>
+            </article>
+
+            <article class="build-card">
+                <img src="images/hunters/rafa.png" alt="Rafa">
+                <h3>Rafa</h3>
+                <p class="build-type">Gunfighter Build</p>
+                <p>
+                    Focus on powerful weapons and
+                    aggressive combat.
+                </p>
+                <button type="button" disabled>View Build — Coming Soon</button>
+            </article>
+
+            <article class="build-card">
+                <img src="images/hunters/amon.png" alt="Amon">
+                <h3>Amon</h3>
+                <p class="build-type">Elemental Tank Build</p>
+                <p>
+                    Combine elemental damage with
+                    defensive abilities.
+                </p>
+                <button type="button" disabled>View Build — Coming Soon</button>
+            </article>
+
+            <article class="build-card">
+                <img src="images/hunters/harlowe.png" alt="Harlowe">
+                <h3>Harlowe</h3>
+                <p class="build-type">Gravity Control Build</p>
+                <p>
+                    Control enemies using gravity
+                    and experimental technology.
+                </p>
+                <button type="button" disabled>View Build — Coming Soon</button>
+            </article>
+
+            <article class="build-card">
+                <img src="images/hunters/c4sh.png" alt="C4SH">
+                <h3>C4SH</h3>
+                <p class="build-type">Luck-Based Build</p>
+                <p>
+                    Explore unpredictable combat
+                    and high-risk strategies.
+                </p>
+                <button type="button" disabled>View Build — Coming Soon</button>
+            </article>
+
+            <article class="build-card">
+                <img src="images/hunters/loveless.png" alt="Loveless">
+                <h3>Loveless</h3>
+                <p class="build-type">Tech Specialist Build</p>
+                <p>
+                    Focus on technology and
+                    disrupting enemy abilities.
+                </p>
+                <button type="button" disabled>View Build — Coming Soon</button>
+            </article>
+
+
+        </section>
+
+        <!-- SAVED COMMUNITY BUILDS -->
+
+        <section class="saved-builds-section">
+            <h2>Community Builds</h2>
+
+            <p>
+                Explore custom Vault Hunter builds
+                saved to the database.
+            </p>
+
+            <div id="saved-builds-list" class="builds-grid">
+                <p>Loading saved builds...</p>
+            </div>
+        </section>
+
+        <!-- CREATE YOUR OWN BUILD -->
+
+        <section class="create-build-section">
+
+
     </main>
+
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+
+        menuToggle.addEventListener("click", function () {
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+    </script>
+
+    <script src="JS/builds.js"></script>
 
 </body>
 

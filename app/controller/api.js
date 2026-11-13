@@ -168,4 +168,80 @@ router.delete("/weapons/:id", function(req, res) {
     });
 });
 
+
+/* VAULT HUNTER BUILDS API */
+
+// Validate build information
+function isValidBuild(build) {
+    if (!build || typeof build !== "object" || Array.isArray(build)) {
+        return false;
+    }
+
+    const requiredFields = {
+        build_name: 100,
+        vault_hunter: 50,
+        main_weapon: 100,
+        description: 2000
+    };
+
+    for (const [field, maxLength] of Object.entries(requiredFields)) {
+        if (
+            typeof build[field] !== "string" ||
+            !build[field].trim() ||
+            build[field].length > maxLength
+        ) {
+            return false;
+        }
+    }
+
+    const validHunters = [
+        "Vex", "Rafa", "Amon",
+        "Harlowe", "C4SH", "Loveless"
+    ];
+
+    return validHunters.includes(build.vault_hunter);
+}
+
+// GET - Retrieve all saved builds
+router.get("/builds", function(req, res) {
+    database.getBuilds(function(error, builds) {
+        if (error) {
+            console.error("Error retrieving builds:", error.message);
+
+            return res.status(500).json({
+                error: "Could not retrieve builds"
+            });
+        }
+
+        res.json(builds);
+    });
+});
+
+// POST - Save a new build
+router.post("/builds", function(req, res) {
+    const build = req.body;
+
+    if (!isValidBuild(build)) {
+        return res.status(400).json({
+            error: "Invalid build information. Complete all fields."
+        });
+    }
+
+    database.createBuild(build, function(error, result) {
+        if (error) {
+            console.error("Error creating build:", error.message);
+
+            return res.status(500).json({
+                error: "Could not save build"
+            });
+        }
+
+        res.status(201).json({
+            message: "Build saved successfully!",
+            id: result.insertId
+        });
+    });
+});
+
+
 module.exports = router;
