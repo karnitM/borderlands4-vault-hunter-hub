@@ -37,29 +37,101 @@ async function loadBuilds() {
             const card = document.createElement("article");
             card.className = "build-card";
 
+            // Vault Hunter image
             const image = document.createElement("img");
             image.src = hunterImages[build.vault_hunter] || "";
             image.alt = build.vault_hunter + " character artwork";
 
+            // Build name
             const name = document.createElement("h3");
             name.textContent = build.build_name;
 
+            // Vault Hunter
             const hunter = document.createElement("p");
             hunter.className = "build-type";
             hunter.textContent = "Vault Hunter: " + build.vault_hunter;
 
+            // Main weapon
             const weapon = document.createElement("p");
             weapon.textContent = "Main Weapon: " + build.main_weapon;
 
+            // Build description
             const description = document.createElement("p");
             description.textContent = build.description;
 
+            // Buttons container
+            const actions = document.createElement("div");
+            actions.className = "build-actions";
+
+            // EDIT BUILD BUTTON
+            const editButton = document.createElement("button");
+            editButton.type = "button";
+            editButton.className = "edit-build-button";
+            editButton.textContent = "Edit Build";
+
+            editButton.addEventListener("click", function() {
+                window.location.href = "edit-build.html?id=" + build.id;
+            });
+
+            // DELETE BUILD BUTTON
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "delete-build-button";
+            deleteButton.textContent = "Delete Build";
+
+            deleteButton.addEventListener("click", async function() {
+                const confirmed = confirm(
+                    "Are you sure you want to delete '" +
+                    build.build_name + "'?"
+                );
+
+                if (!confirmed) {
+                    return;
+                }
+
+                try {
+                    deleteButton.disabled = true;
+
+                    const response = await fetch(
+                        "/api/builds/" + build.id,
+                        {
+                            method: "DELETE"
+                        }
+                    );
+
+                    if (!response.ok) {
+                        throw new Error("Failed to delete build");
+                    }
+
+                    alert("Build deleted successfully!");
+
+                    // Refresh builds from MySQL
+                    await loadBuilds();
+
+                } catch (error) {
+                    console.error("Error deleting build:", error);
+
+                    alert(
+                        "Could not delete build. Please try again."
+                    );
+
+                    deleteButton.disabled = false;
+                }
+            });
+
+            // Add buttons to container
+            actions.appendChild(editButton);
+            actions.appendChild(deleteButton);
+
+            // Add content to build card
             card.appendChild(image);
             card.appendChild(name);
             card.appendChild(hunter);
             card.appendChild(weapon);
             card.appendChild(description);
+            card.appendChild(actions);
 
+            // Display build card
             buildsContainer.appendChild(card);
         });
 

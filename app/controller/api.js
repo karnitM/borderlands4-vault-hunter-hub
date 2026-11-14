@@ -243,5 +243,75 @@ router.post("/builds", function(req, res) {
     });
 });
 
+// PUT - Update an existing build
+router.put("/builds/:id", function(req, res) {
+    const id = Number(req.params.id);
+    const build = req.body;
+
+    if (!Number.isSafeInteger(id) || id <= 0) {
+        return res.status(400).json({
+            error: "Invalid build ID"
+        });
+    }
+
+    if (!isValidBuild(build)) {
+        return res.status(400).json({
+            error: "Invalid build information. Complete all fields."
+        });
+    }
+
+    database.updateBuild(id, build, function(error, result) {
+        if (error) {
+            console.error("Error updating build:", error.message);
+
+            return res.status(500).json({
+                error: "Could not update build"
+            });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                error: "Build not found"
+            });
+        }
+
+        res.json({
+            message: "Build updated successfully!",
+            id: id
+        });
+    });
+});
+
+// DELETE - Remove an existing build
+router.delete("/builds/:id", function(req, res) {
+    const id = Number(req.params.id);
+
+    if (!Number.isSafeInteger(id) || id <= 0) {
+        return res.status(400).json({
+            error: "Invalid build ID"
+        });
+    }
+
+    database.deleteBuild(id, function(error, result) {
+        if (error) {
+            console.error("Error deleting build:", error.message);
+
+            return res.status(500).json({
+                error: "Could not delete build"
+            });
+        }
+
+        if (result.affectedRows === 0) {
+            return res.status(404).json({
+                error: "Build not found"
+            });
+        }
+
+        res.json({
+            message: "Build deleted successfully!",
+            id: id
+        });
+    });
+});
 
 module.exports = router;

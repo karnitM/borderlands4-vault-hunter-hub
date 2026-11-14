@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Edit Build - Borderlands 4 Vault Hunter Hub</title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/builds.css">
+</head>
+
+<body>
+
+    <header class="site-header">
+        <h1>Borderlands 4 Vault Hunter Hub</h1>
+
+        <nav class="navbar">
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="weapons.html">Weapons</a>
+                <a href="vault-hunters.html">Vault Hunters</a>
+                <a href="builds.html">Builds</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="builds-container">
+
+        <section class="create-build-section">
+            <h2>Edit Vault Hunter Build</h2>
+            <p>Update your build information below.</p>
+
+            <form id="edit-build-form">
+
+                <label for="build-name">Build Name</label>
+                <input type="text" id="build-name"
+                       maxlength="100" required>
+
+                <label for="vault-hunter">Vault Hunter</label>
+                <select id="vault-hunter" required>
+                    <option value="Vex">Vex</option>
+                    <option value="Rafa">Rafa</option>
+                    <option value="Amon">Amon</option>
+                    <option value="Harlowe">Harlowe</option>
+                    <option value="C4SH">C4SH</option>
+                    <option value="Loveless">Loveless</option>
+                </select>
+
+                <label for="build-weapon">Main Weapon</label>
+                <input type="text" id="build-weapon"
+                       maxlength="100" required>
+
+                <label for="build-description">Description</label>
+                <textarea id="build-description"
+                          maxlength="2000" rows="5"
+                          required></textarea>
+
+                <button type="submit" id="save-build">
+                    Save Changes
+                </button>
+
+                <a href="builds.html" class="create-build-button">
+                    Cancel
+                </a>
+
+            </form>
+
+            <p id="edit-message" role="status"></p>
+        </section>
+
+    </main>
+
+    <script src="JS/edit-build.js"></script>
+
+</body>
+</html>

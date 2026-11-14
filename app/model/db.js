@@ -152,6 +152,45 @@ function createBuild(build, callback) {
     });
 }
 
+// Update an existing Vault Hunter build
+function updateBuild(id, build, callback) {
+    const connection = mysql.createConnection(dbConfig);
+
+    const sql = `
+        UPDATE builds
+        SET build_name = ?,
+            vault_hunter = ?,
+            main_weapon = ?,
+            description = ?
+        WHERE id = ?
+    `;
+
+    const values = [
+        build.build_name,
+        build.vault_hunter,
+        build.main_weapon,
+        build.description,
+        id
+    ];
+
+    connection.query(sql, values, function(error, result) {
+        connection.end();
+        callback(error, result);
+    });
+}
+
+// Delete a Vault Hunter build
+function deleteBuild(id, callback) {
+    const connection = mysql.createConnection(dbConfig);
+
+    const sql = "DELETE FROM builds WHERE id = ?";
+
+    connection.query(sql, [id], function(error, result) {
+        connection.end();
+        callback(error, result);
+    });
+}
+
 module.exports = {
     testConnection,
     getUsers,
@@ -160,5 +199,7 @@ module.exports = {
     updateWeapon,
     deleteWeapon,
     getBuilds,
-    createBuild
+    createBuild,
+    updateBuild,
+    deleteBuild
 };
