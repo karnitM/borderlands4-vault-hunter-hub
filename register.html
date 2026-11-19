@@ -1,77 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register - Borderlands 4 Vault Hunter Hub</title>
-    <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Borderlands 4 Vault Hunter Hub</title>
+<link rel="stylesheet" href="CSS/style.css">
 </head>
-
 <body>
 
-    <h1>Borderlands 4 Vault Hunter Hub</h1>
+<header class="site-header">
+<h1>Borderlands 4 Vault Hunter Hub</h1>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="weapons.html">Weapons</a>
-        <a href="builds.html">Builds</a>
-        <a href="login.html">Login</a>
-    </nav>
+<nav class="navbar" aria-label="Main navigation">
+<button class="menu-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">☰</button>
+<div class="nav-links" id="nav-links">
+<a href="index.html">Home</a>
+<a href="weapons.html">Weapons</a>
+<a href="vault-hunters.html">Vault Hunters</a>
+<a href="builds.html">Builds</a>
+<a href="login.html">Login</a>
+</div>
+</nav>
+</header>
 
-    <main>
+<main>
+<div class="account-form">
+<h2>Create Account</h2>
+<p>Register to create and manage your own Vault Hunter builds.</p>
 
-        <div class="account-form">
+<form id="register-form">
 
-            <h2>Create Account</h2>
+<label for="username">Username</label>
+<input type="text" id="username" name="username" maxlength="50" autocomplete="username" required>
 
-            <form>
+<label for="register-email">Email</label>
+<input type="email" id="register-email" name="email" autocomplete="email" required>
 
-                <label for="username">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    required
-                >
+<label for="register-password">Password</label>
+<input type="password" id="register-password" name="password" minlength="8" autocomplete="new-password" required>
 
-                <label for="register-email">Email</label>
-                <input
-                    type="email"
-                    id="register-email"
-                    name="email"
-                    required
-                >
+<label for="confirm-password">Confirm Password</label>
+<input type="password" id="confirm-password" name="confirmPassword" minlength="8" autocomplete="new-password" required>
 
-                <label for="register-password">Password</label>
-                <input
-                    type="password"
-                    id="register-password"
-                    name="password"
-                    required
-                >
+<button type="submit" id="register-button">Register</button>
 
-                <label for="confirm-password">Confirm Password</label>
-                <input
-                    type="password"
-                    id="confirm-password"
-                    name="confirmPassword"
-                    required
-                >
+</form>
 
-                <button type="submit">Register</button>
+<p id="register-message" role="status" aria-live="polite"></p>
 
-            </form>
+<p>
+Already have an account?
+<a href="login.html">Login here</a>
+</p>
 
-            <p>
-                Already have an account?
-                <a href="login.html">Login here</a>
-            </p>
+</div>
+</main>
 
-        </div>
+<script>
+const menuToggle = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
-    </main>
+menuToggle.addEventListener("click", function() {
+const isOpen = navLinks.classList.toggle("open");
+menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+</script>
+
+<script src="JS/register.js"></script>
 
 </body>
-
 </html>

@@ -28,6 +28,23 @@ function getUsers(callback) {
     );
 }
 
+// Register a new user
+function createUser(username, email, passwordHash, callback) {
+const connection = mysql.createConnection(dbConfig);
+
+const sql = `
+INSERT INTO users (name, email, password_hash)
+VALUES (?, ?, ?)
+`;
+
+const values = [username, email, passwordHash];
+
+connection.query(sql, values, function(error, result) {
+connection.end();
+callback(error, result);
+});
+}
+
 // Get all weapons
 function getWeapons(callback) {
     const connection = mysql.createConnection(dbConfig);
@@ -191,9 +208,28 @@ function deleteBuild(id, callback) {
     });
 }
 
+// Find a user by email for login
+function getUserByEmail(email, callback) {
+const connection = mysql.createConnection(dbConfig);
+
+const sql = `
+SELECT id, name, email, password_hash
+FROM users
+WHERE email = ?
+LIMIT 1
+`;
+
+connection.query(sql, [email], function(error, results) {
+connection.end();
+callback(error, results && results[0] ? results[0] : null);
+});
+}
+
 module.exports = {
     testConnection,
     getUsers,
+    createUser,
+    getUserByEmail,
     getWeapons,
     createWeapon,
     updateWeapon,
